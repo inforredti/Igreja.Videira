@@ -35,10 +35,6 @@ width:110px;
 margin-bottom:10px;
 }
 
-h2{
-margin:10px 0;
-}
-
 p{
 color:#555;
 }
@@ -52,8 +48,6 @@ border-radius:10px;
 font-size:16px;
 text-decoration:none;
 font-weight:bold;
-cursor:pointer;
-border:none;
 }
 
 .instagram{
@@ -79,7 +73,7 @@ overflow:hidden;
 height:8px;
 width:0%;
 background:#4facfe;
-transition:width 1s;
+transition:width 0.5s;
 }
 
 .footer{
@@ -102,13 +96,14 @@ color:#777;
 
 <p>Siga nosso Instagram para acessar a internet</p>
 
-<button class="btn instagram" onclick="seguir()">
+<a class="btn instagram"
+href="https://instagram.com/videira.anapolis">
 Seguir no Instagram
-</button>
+</a>
 
-<button class="btn liberar" onclick="liberar()">
+<a class="btn liberar" onclick="liberar()">
 Já segui ✔
-</button>
+</a>
 
 <div class="progress">
 <div class="bar" id="barra"></div>
@@ -122,19 +117,6 @@ Internet gratuita para visitantes
 
 <script>
 
-function seguir(){
-
-// tenta abrir app
-window.location.href="instagram://user?username=videira.anapolis"
-
-// fallback navegador
-setTimeout(function(){
-window.location.href="https://instagram.com/videira.anapolis"
-},1200)
-
-}
-
-// barra progresso
 let progresso = 0
 
 function liberar(){

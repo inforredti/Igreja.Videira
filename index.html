@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>WiFi Visitantes</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+background:linear-gradient(135deg,#4facfe,#00f2fe);
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+.card{
+background:white;
+width:350px;
+padding:30px;
+border-radius:18px;
+text-align:center;
+box-shadow:0 15px 40px rgba(0,0,0,0.25);
+}
+
+.logo{
+width:110px;
+margin-bottom:15px;
+}
+
+h1{
+margin:10px 0;
+}
+
+p{
+color:#555;
+}
+
+.btn{
+display:block;
+width:100%;
+padding:14px;
+margin-top:15px;
+border:none;
+border-radius:8px;
+font-size:16px;
+cursor:pointer;
+font-weight:bold;
+}
+
+.instagram{
+background:linear-gradient(45deg,#833AB4,#FD1D1D,#F77737);
+color:white;
+}
+
+.wifi{
+background:#2ecc71;
+color:white;
+}
+
+.footer{
+margin-top:20px;
+font-size:12px;
+color:#777;
+}
+
+.timer{
+margin-top:10px;
+font-size:14px;
+color:#444;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="card">
+
+<img src="channels4_profile.png" class="logo">
+
+<h1>WiFi Visitantes</h1>
+
+<p>Siga nosso Instagram para liberar o acesso</p>
+
+<button class="btn instagram" onclick="seguirInstagram()">
+Seguir no Instagram
+</button>
+
+<div class="timer" id="contador">
+Clique em seguir para liberar a internet
+</div>
+
+<button class="btn wifi" id="wifiBtn" onclick="liberarWifi()" disabled>
+Conectar ao WiFi
+</button>
+
+<div class="footer">
+Internet gratuita para visitantes
+</div>
+
+</div>
+
+<script>
+
+let tempo = 5
+
+function seguirInstagram(){
+
+window.open("https://instagram.com/videira.anapolis","_blank")
+
+let contagem = setInterval(function(){
+
+tempo--
+
+document.getElementById("contador").innerText =
+"Aguarde " + tempo + " segundos..."
+
+if(tempo <= 0){
+
+clearInterval(contagem)
+
+document.getElementById("contador").innerText =
+"Acesso liberado!"
+
+document.getElementById("wifiBtn").disabled = false
+
+}
+
+},1000)
+
+}
+
+function liberarWifi(){
+
+window.location.href="https://google.com"
+
+}
+
+</script>
+
+</body>
+</html>

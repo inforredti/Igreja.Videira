@@ -1,5 +1,14 @@
-<!DOCTYPE html><html lang="pt-br"><head><meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>WiFi Visitantes</title><style>
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>WiFi Visitantes</title>
+
+<style>
 
 body{
 margin:0;
@@ -23,14 +32,6 @@ box-shadow:0 15px 40px rgba(0,0,0,0.25);
 .logo{
 width:110px;
 margin-bottom:15px;
-}
-
-h1{
-margin:10px 0;
-}
-
-p{
-color:#555;
 }
 
 .btn{
@@ -57,30 +58,53 @@ color:#777;
 }
 
 .timer{
-margin-top:10px;
+margin-top:15px;
 font-weight:bold;
 }
 
-</style></head><body><div class="card"><img src="channels4_profile.png" class="logo"><h1>WiFi Visitantes</h1><p>Siga nosso Instagram para acessar a internet</p><a class="btn instagram" onclick="abrirInstagram()">
+</style>
+
+</head>
+
+<body>
+
+<div class="card">
+
+<img src="channels4_profile.png" class="logo">
+
+<h1>WiFi Visitantes</h1>
+
+<p>Siga nosso Instagram para acessar a internet</p>
+
+<a class="btn instagram"
+href="instagram://user?username=videira.anapolis"
+id="botaoInstagram">
 Seguir no Instagram
-</a><div class="timer" id="contador">
+</a>
+
+<div class="timer" id="contador">
 Liberando internet em 10 segundos...
-</div><div class="footer">
+</div>
+
+<div class="footer">
 Internet gratuita para visitantes
-</div></div><script>
+</div>
 
-function abrirInstagram(){
+</div>
 
-// tenta abrir app
-window.location.href="instagram://user?username=videira.anapolis"
+<script>
 
-// fallback navegador
+// tenta abrir instagram automaticamente
 setTimeout(function(){
-window.open("https://instagram.com/videira.anapolis","_blank")
+window.location.href="instagram://user?username=videira.anapolis"
 },1500)
 
-}
+// fallback caso app não abra
+setTimeout(function(){
+window.location.href="https://instagram.com/videira.anapolis"
+},3500)
 
+// contador
 let tempo = 10
 
 let contador = setInterval(function(){
@@ -94,10 +118,15 @@ if(tempo <= 0){
 
 clearInterval(contador)
 
+// libera internet
 window.location.href="http://neverssl.com"
 
 }
 
 },1000)
 
-</script></body></html>
+</script>
+
+</body>
+
+</html>

@@ -1,7 +1,10 @@
+Html id="m3f2q9"
+Copiar código
 <!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -11,7 +14,7 @@
 
 body{
 margin:0;
-font-family:Arial;
+font-family:Arial, Helvetica, sans-serif;
 background:linear-gradient(135deg,#4facfe,#00f2fe);
 height:100vh;
 display:flex;
@@ -21,7 +24,8 @@ justify-content:center;
 
 .card{
 background:white;
-width:330px;
+width:90%;
+max-width:340px;
 padding:30px;
 border-radius:18px;
 text-align:center;
@@ -30,14 +34,22 @@ box-shadow:0 15px 40px rgba(0,0,0,0.25);
 
 .logo{
 width:110px;
-margin-bottom:15px;
+margin-bottom:10px;
+}
+
+h2{
+margin:10px 0;
+}
+
+p{
+color:#555;
 }
 
 .btn{
 display:block;
 width:100%;
-padding:15px;
-margin-top:20px;
+padding:14px;
+margin-top:15px;
 border-radius:10px;
 font-size:16px;
 text-decoration:none;
@@ -49,6 +61,27 @@ border:none;
 .instagram{
 background:linear-gradient(45deg,#833AB4,#FD1D1D,#F77737);
 color:white;
+}
+
+.liberar{
+background:#28a745;
+color:white;
+}
+
+.progress{
+width:100%;
+height:8px;
+background:#eee;
+border-radius:10px;
+margin-top:20px;
+overflow:hidden;
+}
+
+.bar{
+height:8px;
+width:0%;
+background:#4facfe;
+transition:width 1s;
 }
 
 .footer{
@@ -71,9 +104,17 @@ color:#777;
 
 <p>Siga nosso Instagram para acessar a internet</p>
 
-<button class="btn instagram" onclick="abrirInstagram()">
+<button class="btn instagram" onclick="seguir()">
 Seguir no Instagram
 </button>
+
+<button class="btn liberar" onclick="liberar()">
+Já segui ✔
+</button>
+
+<div class="progress">
+<div class="bar" id="barra"></div>
+</div>
 
 <div class="footer">
 Internet gratuita para visitantes
@@ -83,24 +124,45 @@ Internet gratuita para visitantes
 
 <script>
 
-function abrirInstagram(){
+function seguir(){
 
-// abre instagram direto
-window.location.href = "instagram://user?username=videira.anapolis";
+// tenta abrir app
+window.location.href="instagram://user?username=videira.anapolis"
 
-// fallback caso não tenha app
+// fallback navegador
 setTimeout(function(){
-window.location.href = "https://instagram.com/videira.anapolis";
-},1200);
+window.location.href="https://instagram.com/videira.anapolis"
+},1200)
 
-// libera navegação depois
-setTimeout(function(){
-window.location.href = "http://neverssl.com";
-},3000);
+}
+
+// barra progresso
+let progresso = 0
+
+function liberar(){
+
+let barra = document.getElementById("barra")
+
+let intervalo = setInterval(function(){
+
+progresso += 20
+
+barra.style.width = progresso + "%"
+
+if(progresso >= 100){
+
+clearInterval(intervalo)
+
+window.location.href="http://neverssl.com"
+
+}
+
+},500)
 
 }
 
 </script>
 
 </body>
+
 </html>

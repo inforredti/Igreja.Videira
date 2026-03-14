@@ -1,14 +1,5 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-
-<head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>WiFi Visitantes</title>
-
-<style>
+<!DOCTYPE html><html lang="pt-br"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>WiFi Visitantes</title><style>
 
 body{
 margin:0;
@@ -34,6 +25,14 @@ width:110px;
 margin-bottom:15px;
 }
 
+h1{
+margin:10px 0;
+}
+
+p{
+color:#555;
+}
+
 .btn{
 display:block;
 width:100%;
@@ -43,6 +42,7 @@ border-radius:8px;
 font-size:16px;
 text-decoration:none;
 font-weight:bold;
+cursor:pointer;
 }
 
 .instagram{
@@ -50,51 +50,54 @@ background:linear-gradient(45deg,#833AB4,#FD1D1D,#F77737);
 color:white;
 }
 
-.wifi{
-background:#2ecc71;
-color:white;
-}
-
 .footer{
 margin-top:20px;
-font-size:12px;
+font-size:13px;
 color:#777;
 }
 
-</style>
+.timer{
+margin-top:10px;
+font-weight:bold;
+}
 
-</head>
-
-<body>
-
-<div class="card">
-
-<img src="channels4_profile.png" class="logo">
-
-<h1>WiFi Visitantes</h1>
-
-<p>Siga nosso Instagram para acessar a internet</p>
-
-<a class="btn instagram"
-href="https://instagram.com/videira.anapolis"
-target="_blank"
-rel="noopener">
+</style></head><body><div class="card"><img src="channels4_profile.png" class="logo"><h1>WiFi Visitantes</h1><p>Siga nosso Instagram para acessar a internet</p><a class="btn instagram" onclick="abrirInstagram()">
 Seguir no Instagram
-</a>
-
-<a class="btn wifi"
-href="https://www.google.com"
-target="_blank"
-rel="noopener">
-Conectar ao WiFi
-</a>
-
-<div class="footer">
+</a><div class="timer" id="contador">
+Liberando internet em 10 segundos...
+</div><div class="footer">
 Internet gratuita para visitantes
-</div>
+</div></div><script>
 
-</div>
+function abrirInstagram(){
 
-</body>
+// tenta abrir app
+window.location.href="instagram://user?username=videira.anapolis"
 
-</html>
+// fallback navegador
+setTimeout(function(){
+window.open("https://instagram.com/videira.anapolis","_blank")
+},1500)
+
+}
+
+let tempo = 10
+
+let contador = setInterval(function(){
+
+tempo--
+
+document.getElementById("contador").innerText =
+"Liberando internet em " + tempo + " segundos..."
+
+if(tempo <= 0){
+
+clearInterval(contador)
+
+window.location.href="http://neverssl.com"
+
+}
+
+},1000)
+
+</script></body></html>

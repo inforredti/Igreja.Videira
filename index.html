@@ -2,6 +2,7 @@
 <html lang="pt-br">
 
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -21,7 +22,7 @@ justify-content:center;
 
 .card{
 background:white;
-width:350px;
+width:340px;
 padding:30px;
 border-radius:18px;
 text-align:center;
@@ -33,23 +34,14 @@ width:110px;
 margin-bottom:15px;
 }
 
-h1{
-margin:10px 0;
-}
-
-p{
-color:#555;
-}
-
 .btn{
 display:block;
 width:100%;
 padding:14px;
 margin-top:15px;
-border:none;
 border-radius:8px;
 font-size:16px;
-cursor:pointer;
+text-decoration:none;
 font-weight:bold;
 }
 
@@ -69,12 +61,6 @@ font-size:12px;
 color:#777;
 }
 
-.timer{
-margin-top:10px;
-font-size:14px;
-color:#444;
-}
-
 </style>
 
 </head>
@@ -87,19 +73,21 @@ color:#444;
 
 <h1>WiFi Visitantes</h1>
 
-<p>Siga nosso Instagram para liberar o acesso</p>
+<p>Siga nosso Instagram para acessar a internet</p>
 
-<button class="btn instagram" onclick="seguirInstagram()">
+<a class="btn instagram"
+href="https://instagram.com/videira.anapolis"
+target="_blank"
+rel="noopener">
 Seguir no Instagram
-</button>
+</a>
 
-<div class="timer" id="contador">
-Clique em seguir para liberar a internet
-</div>
-
-<button class="btn wifi" id="wifiBtn" onclick="liberarWifi()" disabled>
+<a class="btn wifi"
+href="https://www.google.com"
+target="_blank"
+rel="noopener">
 Conectar ao WiFi
-</button>
+</a>
 
 <div class="footer">
 Internet gratuita para visitantes
@@ -107,43 +95,6 @@ Internet gratuita para visitantes
 
 </div>
 
-<script>
-
-let tempo = 5
-
-function seguirInstagram(){
-
-window.open("https://instagram.com/videira.anapolis","_blank")
-
-let contagem = setInterval(function(){
-
-tempo--
-
-document.getElementById("contador").innerText =
-"Aguarde " + tempo + " segundos..."
-
-if(tempo <= 0){
-
-clearInterval(contagem)
-
-document.getElementById("contador").innerText =
-"Acesso liberado!"
-
-document.getElementById("wifiBtn").disabled = false
-
-}
-
-},1000)
-
-}
-
-function liberarWifi(){
-
-window.location.href="https://google.com"
-
-}
-
-</script>
-
 </body>
+
 </html>

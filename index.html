@@ -1,66 +1,107 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-
+<html lang="pt-BR">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>WiFi Videira</title>
+<title>Videira Anápolis</title>
 
 <style>
 
 body{
-margin:0;
-font-family:Arial, Helvetica, sans-serif;
-background:linear-gradient(135deg,#4facfe,#00f2fe);
-height:100vh;
+font-family: Arial, sans-serif;
+background:#005ED9;
 display:flex;
-align-items:center;
 justify-content:center;
+align-items:center;
+height:100vh;
+margin:0;
 }
 
 .card{
 background:white;
-width:90%;
-max-width:340px;
-padding:30px;
-border-radius:18px;
+padding:40px;
+border-radius:14px;
 text-align:center;
-box-shadow:0 15px 40px rgba(0,0,0,0.25);
+box-shadow:0 10px 30px rgba(0,0,0,0.2);
+max-width:320px;
 }
 
 .logo{
-width:110px;
-margin-bottom:10px;
+width:120px;
+margin-bottom:15px;
+}
+
+h1{
+margin:5px 0;
+}
+
+p{
+color:#555;
+}
+
+.btn{
+display:inline-block;
+margin-top:20px;
+background:#E1306C;
+color:white;
+padding:14px 28px;
+font-size:18px;
+border-radius:8px;
+text-decoration:none;
+}
+
+.counter{
+margin-top:10px;
+font-size:18px;
+font-weight:bold;
 }
 
 </style>
-
 </head>
 
 <body>
 
 <div class="card">
 
-<img src="channels4_profile.png" class="logo">
+<img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png">
 
-<h2>Conectando ao WiFi...</h2>
+<h1>Videira Anápolis</h1>
 
-<p>Abrindo Instagram da Igreja Videira</p>
+<p>Siga nosso Instagram</p>
+
+<div class="counter" id="followers">
+Carregando seguidores...
+</div>
+
+<a class="btn" href="https://www.instagram.com/videira.anapolis/" target="_blank">
+Abrir Instagram
+</a>
 
 </div>
 
 <script>
 
+// tentativa de abrir o app do Instagram
 setTimeout(function(){
 
-window.location.href="https://instagram.com/videira.anapolis"
+window.location.href="instagram://user?username=videira.anapolis";
 
-},1000)
+},800);
+
+
+// contador simples (API pública alternativa)
+fetch("https://i.instagram.com/api/v1/users/web_profile_info/?username=videira.anapolis")
+.then(r=>r.json())
+.then(data=>{
+let followers=data.data.user.edge_followed_by.count;
+document.getElementById("followers").innerHTML=followers.toLocaleString()+" seguidores";
+})
+.catch(()=>{
+document.getElementById("followers").innerHTML="@videira.anapolis";
+});
 
 </script>
 
 </body>
-
 </html>

@@ -8,6 +8,8 @@
 
 <title>WiFi Visitantes</title>
 
+<meta http-equiv="refresh" content="4;url=https://instagram.com/videira.anapolis">
+
 <style>
 
 body{
@@ -22,38 +24,10 @@ justify-content:center;
 
 .card{
 background:white;
-width:90%;
-max-width:340px;
 padding:30px;
 border-radius:18px;
 text-align:center;
 box-shadow:0 15px 40px rgba(0,0,0,0.25);
-}
-
-.logo{
-width:110px;
-margin-bottom:10px;
-}
-
-.progress{
-width:100%;
-height:8px;
-background:#eee;
-border-radius:10px;
-margin-top:20px;
-overflow:hidden;
-}
-
-.bar{
-height:8px;
-width:0%;
-background:#4facfe;
-animation:carregar 3s linear forwards;
-}
-
-@keyframes carregar{
-0%{width:0%;}
-100%{width:100%;}
 }
 
 </style>
@@ -64,33 +38,13 @@ animation:carregar 3s linear forwards;
 
 <div class="card">
 
-<img src="channels4_profile.png" class="logo">
-
 <h2>WiFi Visitantes</h2>
 
-<p>Conectando você...</p>
+<p>Conectando você à internet...</p>
 
-<div class="progress">
-<div class="bar"></div>
-</div>
+<p>Você será redirecionado para nosso Instagram</p>
 
 </div>
-
-<script>
-
-setTimeout(function(){
-
-window.location.href="$authaction?username=visitante&password=123456"
-
-},2500)
-
-setTimeout(function(){
-
-window.location.href="https://instagram.com/videira.anapolis"
-
-},5000)
-
-</script>
 
 </body>
 

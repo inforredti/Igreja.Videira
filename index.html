@@ -1,60 +1,86 @@
+```html
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Videira Anápolis</title>
+<title>Igreja Videira Anápolis</title>
 
 <style>
 
 body{
-font-family: Arial, sans-serif;
-background:#005ED9;
+font-family: Arial, Helvetica, sans-serif;
+background: linear-gradient(135deg,#005ED9,#003A8F);
 display:flex;
 justify-content:center;
 align-items:center;
 height:100vh;
 margin:0;
+color:#333;
 }
 
 .card{
 background:white;
-padding:40px;
-border-radius:14px;
+padding:45px;
+border-radius:16px;
 text-align:center;
-box-shadow:0 10px 30px rgba(0,0,0,0.2);
-max-width:320px;
+box-shadow:0 15px 40px rgba(0,0,0,0.25);
+max-width:340px;
+width:90%;
+animation:fadein 0.7s;
+}
+
+@keyframes fadein{
+from{opacity:0;transform:translateY(20px);}
+to{opacity:1;transform:translateY(0);}
 }
 
 .logo{
-width:120px;
-margin-bottom:15px;
+width:130px;
+margin-bottom:20px;
 }
 
 h1{
 margin:5px 0;
+font-size:26px;
+color:#003A8F;
 }
 
 p{
-color:#555;
-}
-
-.btn{
-display:inline-block;
-margin-top:20px;
-background:#E1306C;
-color:white;
-padding:14px 28px;
-font-size:18px;
-border-radius:8px;
-text-decoration:none;
+color:#666;
+margin-bottom:15px;
 }
 
 .counter{
-margin-top:10px;
+margin-top:8px;
 font-size:18px;
 font-weight:bold;
+color:#111;
+}
+
+.btn{
+display:block;
+margin-top:25px;
+background:#E1306C;
+color:white;
+padding:16px;
+font-size:18px;
+border-radius:10px;
+text-decoration:none;
+font-weight:bold;
+transition:0.3s;
+}
+
+.btn:hover{
+background:#c42c60;
+}
+
+.small{
+margin-top:14px;
+font-size:13px;
+color:#888;
 }
 
 </style>
@@ -64,9 +90,10 @@ font-weight:bold;
 
 <div class="card">
 
-<img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png">
+<!-- SUBSTITUA PELA LOGO OFICIAL DA VIDEIRA -->
+<img class="logo" src="https://i.imgur.com/2yAfW1T.png">
 
-<h1>Videira Anápolis</h1>
+<h1>Igreja Videira</h1>
 
 <p>Siga nosso Instagram</p>
 
@@ -74,28 +101,56 @@ font-weight:bold;
 Carregando seguidores...
 </div>
 
-<a class="btn" href="https://www.instagram.com/videira.anapolis/" target="_blank">
+<a class="btn" id="instaBtn"
+href="https://www.instagram.com/videira.anapolis/"
+target="_blank">
+
 Abrir Instagram
+
 </a>
+
+<div class="small">
+Conectado ao WiFi Videira
+</div>
 
 </div>
 
 <script>
 
-// tentativa de abrir o app do Instagram
+// Tenta abrir o APP do Instagram primeiro
+function abrirInstagram(){
+
+let username="videira.anapolis";
+
+let app="instagram://user?username="+username;
+
+let web="https://www.instagram.com/"+username+"/";
+
+let start = Date.now();
+
+window.location = app;
+
 setTimeout(function(){
 
-window.location.href="instagram://user?username=videira.anapolis";
+if(Date.now() - start < 1500){
+window.location = web;
+}
 
-},800);
+},1200);
+
+}
+
+// tenta automaticamente
+setTimeout(abrirInstagram,900);
 
 
-// contador simples (API pública alternativa)
+// contador de seguidores
 fetch("https://i.instagram.com/api/v1/users/web_profile_info/?username=videira.anapolis")
 .then(r=>r.json())
 .then(data=>{
 let followers=data.data.user.edge_followed_by.count;
-document.getElementById("followers").innerHTML=followers.toLocaleString()+" seguidores";
+document.getElementById("followers").innerHTML=
+followers.toLocaleString()+" seguidores";
 })
 .catch(()=>{
 document.getElementById("followers").innerHTML="@videira.anapolis";
@@ -105,3 +160,4 @@ document.getElementById("followers").innerHTML="@videira.anapolis";
 
 </body>
 </html>
+```

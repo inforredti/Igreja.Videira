@@ -22,7 +22,6 @@ height:100vh;
 }
 
 .card{
-
 background:white;
 width:90%;
 max-width:360px;
@@ -30,33 +29,25 @@ padding:40px;
 border-radius:18px;
 text-align:center;
 box-shadow:0 20px 50px rgba(0,0,0,0.35);
-
 }
 
 .logo{
-
 width:140px;
 margin-bottom:20px;
-
 }
 
 h1{
-
 margin:0;
 font-size:26px;
 color:#002D73;
-
 }
 
 p{
-
 color:#666;
 margin-top:8px;
-
 }
 
 .btn{
-
 display:block;
 margin-top:25px;
 background:#E1306C;
@@ -66,30 +57,23 @@ border-radius:10px;
 font-size:18px;
 font-weight:bold;
 text-decoration:none;
-
 }
 
 .btn:hover{
-
 background:#c1275a;
-
 }
 
 .followers{
-
 margin-top:15px;
 font-size:18px;
 font-weight:bold;
 color:#222;
-
 }
 
 .small{
-
 margin-top:12px;
 font-size:12px;
 color:#888;
-
 }
 
 </style>
@@ -100,38 +84,38 @@ color:#888;
 
 <div class="card">
 
-<img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Videira_logo.png/512px-Videira_logo.png">
+<!-- LOGO LOCAL -->
+<img class="logo" src="channels4_profile.png">
 
 <h1>Igreja Videira</h1>
 
 <p>Siga nosso Instagram</p>
 
 <div class="followers" id="followers">
-
 Carregando seguidores...
-
 </div>
 
 <a class="btn"
 href="https://www.instagram.com/videira.anapolis/"
 target="_blank">
-
 Abrir Instagram
-
 </a>
 
 <div class="small">
-
 Conectado ao WiFi Videira
-
 </div>
 
 </div>
 
 <script>
 
-// tentativa abrir app Instagram
+// garante que o portal finalize conexão
+setTimeout(function(){
+window.location.href="http://neverssl.com";
+},800);
 
+
+// tentativa abrir app Instagram
 function abrirInstagram(){
 
 var username="videira.anapolis";
@@ -147,36 +131,29 @@ window.location=app;
 setTimeout(function(){
 
 if(Date.now()-start<1500){
-
 window.location=web;
-
 }
 
 },1200);
 
 }
 
-// tenta abrir automaticamente
-
-setTimeout(abrirInstagram,900);
+// tenta abrir automaticamente depois
+setTimeout(abrirInstagram,2000);
 
 
 // contador seguidores
 
 fetch("https://i.instagram.com/api/v1/users/web_profile_info/?username=videira.anapolis")
-
 .then(response=>response.json())
-
 .then(data=>{
 
 var seguidores=data.data.user.edge_followed_by.count;
 
-document.getElementById("followers").innerHTML=
-
+document.getElementById("followers").innerHTML =
 seguidores.toLocaleString()+" seguidores";
 
 })
-
 .catch(()=>{
 
 document.getElementById("followers").innerHTML="@videira.anapolis";

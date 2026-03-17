@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -83,7 +84,6 @@ color:#888;
 
 <div class="card">
 
-<!-- LOGO LOCAL -->
 <img class="logo" src="channels4_profile.png">
 
 <h1>Igreja Videira</h1>
@@ -108,19 +108,12 @@ Conectado ao WiFi Videira
 
 <script>
 
-// garante que o portal finalize conexão
-setTimeout(function(){
-window.location.href="http://neverssl.com";
-},800);
-
-
-// tentativa abrir app Instagram
+// abrir instagram automaticamente
 function abrirInstagram(){
 
 var username="videira.anapolis";
 
 var app="instagram://user?username="+username;
-
 var web="https://www.instagram.com/"+username+"/";
 
 var start = Date.now();
@@ -129,16 +122,16 @@ window.location=app;
 
 setTimeout(function(){
 
-if(Date.now()-start<1500){
+if(Date.now()-start<2000){
 window.location=web;
 }
 
-},1200);
+},1500);
 
 }
 
-// tenta abrir automaticamente depois
-setTimeout(abrirInstagram,2000);
+// tentativa automática após carregar
+setTimeout(abrirInstagram,3000);
 
 
 // contador seguidores

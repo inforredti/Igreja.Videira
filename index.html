@@ -48,15 +48,16 @@ margin-top:8px;
 
 .btn{
 display:block;
-margin-top:25px;
+margin:25px auto 0 auto;
 background:#E1306C;
 color:white;
-padding:18px;
+padding:18px 28px;
 border-radius:10px;
 font-size:18px;
 font-weight:bold;
-text-decoration:none;
+border:none;
 cursor:pointer;
+text-align:center;
 }
 
 .btn:hover{
@@ -108,22 +109,24 @@ Ao clicar você será conectado à internet
 
 function conectar(){
 
-// abre instagram
 var app="instagram://user?username=videira.anapolis";
 var web="https://www.instagram.com/videira.anapolis/";
 
+// tenta abrir app
 window.location=app;
 
+// fallback navegador
 setTimeout(function(){
 window.location=web;
 },1500);
 
-// força teste de internet para liberar portal
+// força liberação do captive portal
 setTimeout(function(){
 fetch("http://neverssl.com",{mode:"no-cors"});
 },500);
 
 }
+
 
 // contador seguidores
 fetch("https://i.instagram.com/api/v1/users/web_profile_info/?username=videira.anapolis")

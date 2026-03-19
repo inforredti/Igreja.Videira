@@ -56,6 +56,7 @@ border-radius:10px;
 font-size:18px;
 font-weight:bold;
 text-decoration:none;
+cursor:pointer;
 }
 
 .btn:hover{
@@ -93,48 +94,38 @@ color:#888;
 Carregando seguidores...
 </div>
 
-<a class="btn"
-href="https://www.instagram.com/videira.anapolis/"
-target="_blank">
-Abrir Instagram
-</a>
+<button class="btn" onclick="conectar()">
+Conectar e abrir Instagram
+</button>
 
 <div class="small">
-Conectado ao WiFi Videira
+Ao clicar você será conectado à internet
 </div>
 
 </div>
 
 <script>
 
-// abrir instagram automaticamente
-function abrirInstagram(){
+function conectar(){
 
-var username="videira.anapolis";
-
-var app="instagram://user?username="+username;
-var web="https://www.instagram.com/"+username+"/";
-
-var start = Date.now();
+// abre instagram
+var app="instagram://user?username=videira.anapolis";
+var web="https://www.instagram.com/videira.anapolis/";
 
 window.location=app;
 
 setTimeout(function(){
-
-if(Date.now()-start<2000){
 window.location=web;
-}
-
 },1500);
 
+// força teste de internet para liberar portal
+setTimeout(function(){
+fetch("http://neverssl.com",{mode:"no-cors"});
+},500);
+
 }
 
-// tentativa automática após carregar
-setTimeout(abrirInstagram,3000);
-
-
 // contador seguidores
-
 fetch("https://i.instagram.com/api/v1/users/web_profile_info/?username=videira.anapolis")
 .then(response=>response.json())
 .then(data=>{
@@ -156,4 +147,3 @@ document.getElementById("followers").innerHTML="@videira.anapolis";
 </body>
 
 </html>
-```
